@@ -488,6 +488,26 @@ func parseGeneralAPIInfo(parser *Parser, comments []string) error {
 			parser.swagger.SecurityDefinitions[value] = secOAuth2AccessToken(attrs["@authorizationurl"], attrs["@tokenurl"], scopes, ext)
 		case "@query.collection.format":
 			parser.collectionFormatInQuery = value
+		case "@security":
+			l := strings.Index(value, "[")
+			r := strings.Index(value, "]")
+			if !(l == -1 && r == -1) {
+				// scope exists
+				scopes := value[l+1 : r]
+				var s []string
+				for _, scope := range strings.Split(scopes, ",") {
+					s = append(s, strings.TrimSpace(scope))
+				}
+				securityKey := value[0:l]
+				securityMap := map[string][]string{}
+				securityMap[securityKey] = append(securityMap[securityKey], s...)
+				parser.swagger.Security = append(parser.swagger.Security, securityMap)
+			} else {
+				securityKey := strings.TrimSpace(value)
+				securityMap := map[string][]string{}
+				securityMap[securityKey] = []string{}
+				parser.swagger.Security = append(parser.swagger.Security, securityMap)
+			}
 		default:
 			prefixExtension := "@x-"
 			// Prefix extension + 1 char + 1 space  + 1 char

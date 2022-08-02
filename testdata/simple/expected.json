@@ -739,5 +739,34 @@
         "write": " Grants write access"
       }
     }
-  }
+  },
+  "security": [
+      {
+          "ApiKeyAuth": []
+      },
+      {
+          "BasicAuth": []
+      },
+      {
+          "OAuth2Application": [
+              "write"
+          ]
+      },
+      {
+          "OAuth2Implicit": [
+              "read",
+              "admin"
+          ]
+      },
+      {
+          "OAuth2AccessCode": [
+              "read"
+          ]
+      },
+      {
+          "OAuth2Password": [
+              "admin"
+          ]
+      }
+  ]
 }

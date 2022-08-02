@@ -47,6 +47,13 @@ import (
 // @tokenUrl https://example.com/oauth/token
 // @authorizationurl https://example.com/oauth/authorize
 // @scope.admin Grants read and write access to administrative information
+
+// @Security ApiKeyAuth
+// @Security BasicAuth
+// @Security OAuth2Application[write]
+// @Security OAuth2Implicit[read, admin]
+// @Security OAuth2AccessCode[read]
+// @Security OAuth2Password[admin]
 func main() {
 	http.HandleFunc("/testapi/get-string-by-int/", api.GetStringByInt)
 	http.HandleFunc("/testapi/get-struct-array-by-string/", api.GetStructArrayByString)

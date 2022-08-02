@@ -11,7 +11,7 @@ require (
 	github.com/swaggo/cli v1.22.2 // indirect
 	github.com/urfave/cli/v2 v2.3.0
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
-	golang.org/x/tools v0.1.7
+	golang.org/x/tools v0.1.8
 )
 
 go 1.13
