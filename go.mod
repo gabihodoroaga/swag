@@ -1,4 +1,4 @@
-module github.com/gabihodoroaga/swag
+module github.com/swaggo/swag
 
 require (
 	github.com/KyleBanks/depth v1.2.1
@@ -7,7 +7,6 @@ require (
 	github.com/go-openapi/spec v0.20.4
 	github.com/otiai10/copy v1.7.0
 	github.com/stretchr/testify v1.7.0
-	github.com/swaggo/swag v1.8.12
 	github.com/urfave/cli/v2 v2.3.0
 	golang.org/x/tools v0.7.0
 )
